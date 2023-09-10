@@ -18,14 +18,14 @@ const database = getDatabase(app);
 const auth = getAuth(app);
 
 var studentdetails = document.querySelectorAll("#StudentDetail form div div input")
-var studentlabelDetail = document.querySelectorAll("#StudentDetail form div div label")
+
 const studentDetail = {}
 const rollNumberInput = document.getElementById("rollNumber");
 document.getElementById("submit").addEventListener("click", async (e) => {
   e.preventDefault(); // Prevent default form submission
   try {
     for (var i = 0; i < studentdetails.length; i++) {
-      studentDetail[studentlabelDetail[i].innerHTML] = studentdetails[i].value;
+      studentDetail[studentdetails[i].id] = studentdetails[i].value;
     }
     const userId = rollNumberInput.value;
     const usersObj = studentDetail;
@@ -36,21 +36,35 @@ document.getElementById("submit").addEventListener("click", async (e) => {
     console.error("Error:", error);
   }
 });
+var crudData=document.getElementById("studentTable");
+var tdCrud="";
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     const usersReference = ref(database, "users/");
     onValue(usersReference, (data) => {
-   for(var i=1;i<data.val().length;i++){
-      console.log(data.val()[i].Roll);
-      console.log(data.val()[1]);
-    }
 
+      const userData = data.val();
+        for(var i=0;i<userData.length;)
+      for (const userId in userData) {
+        console.log(userId);
+        const user = userData[userId];
+        console.log("Keys:");
+        for (const key in user) {
+          console.log(key);
+        }
+        console.log("Values:");
+        for (const key in user) {
+          tdCrud+=`<td> ${user[key]}</td>`
+        }
+      }
+      crudData.innerHTML=`<tr>${tdCrud}</tr>`
+      console.log("Keys and values logged successfully!");
     });
-    console.log("Data fetched successfully!");
   } catch (error) {
     console.error("Error:", error);
   }
 });
+
 
 
 
