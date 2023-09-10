@@ -16,6 +16,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const auth = getAuth(app);
+var crudData=document.getElementById("studentTable");
+var tdCrud="";
 
 var studentdetails = document.querySelectorAll("#StudentDetail form div div input")
 
@@ -23,6 +25,8 @@ const studentDetail = {}
 const rollNumberInput = document.getElementById("rollNumber");
 document.getElementById("submit").addEventListener("click", async (e) => {
   e.preventDefault(); // Prevent default form submission
+  crudData.innerHTML="";
+  tdCrud="";
   try {
     for (var i = 0; i < studentdetails.length; i++) {
       studentDetail[studentdetails[i].id] = studentdetails[i].value;
@@ -36,18 +40,19 @@ document.getElementById("submit").addEventListener("click", async (e) => {
     console.error("Error:", error);
   }
 });
-var crudData=document.getElementById("studentTable");
-var tdCrud="";
+
 document.addEventListener("DOMContentLoaded", async () => {
+  crudData.innerHTML="";
+  tdCrud="";
   try {
     const usersReference = ref(database, "users/");
     onValue(usersReference, (data) => {
 
-      const userData = data.val();
+    const userData = data.val();
      console.log(userData);
          userData.map(e=>{
           console.log(e)
-          tdCrud=`<tr>
+          tdCrud+=`<tr>
           <td>${e.studentName}</td>
           <td>${e.fatherName}</td>
           <td>${e.rollNumber}</td>
@@ -57,8 +62,9 @@ document.addEventListener("DOMContentLoaded", async () => {
           <td>${e.cnicNumber}</td>
           </tr>`
          })
-
-      crudData.innerHTML+=`${tdCrud}`
+       crudData.innerHTML="";
+      crudData.innerHTML=tdCrud;
+      tdCrud="";
       console.log("Keys and values logged successfully!");
     });
   } catch (error) {
