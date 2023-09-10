@@ -109,6 +109,7 @@
                     <th>Picture</th>
                     <th>Actions</th>
                 </tr>
+                <tr id=""></tr>
             </thead>
             <tbody id="studentTable">
                 <!-- Example student records will be added dynamically -->
@@ -118,7 +119,7 @@
 
     <div class="container mt-3" id="StudentDetail">
         <h2>Student Records</h2>
-        <form autocomplete="off">
+        <form autocomplete="off" >
             <div class="row">
                 <div class="col-md-6">
                     <label for="studentName">Student Name</label>
@@ -131,9 +132,11 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <label for="rollNumber">Roll Number</label>
-                    <input type="number" class="form-control" name="rollNumber" id="rollNumber">
+                    <label for="rollNumber">Roll</label> <br>
+                    <input type="number"  class="form-control" name="rollNumber" id="rollNumber">
+                    <div id="rollNumberMessage" style="color: red;"></div>
                 </div>
+                
                 <div class="col-md-6">
                     <label for="contactNumber">Contact Number</label>
                     <input type="text" class="form-control" name="contactNumber" id="contactNumber">
@@ -166,39 +169,42 @@
             <div class="row">
                 <div class="col-md-6">
                     <label for="rollNumber">Class Timing</label>
-                    <input type="number" class="form-control" name="rollNumber" id="classTiming">
+                    <input type="time" class="form-control" name="rollNumber" id="rollNumber">
                 </div>
                 <div class="col-md-6">
                     <label for="contactNumber">Schedule Of Classes</label>
-                    <input type="text" class="form-control" name="contactNumber" id="classSchedual">
+                    <input type="text" class="form-control" name="contactNumber" id="contactNumber">
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
                     <label for="rollNumber">Teacher's Name</label>
-                    <input type="number" class="form-control" name="rollNumber" id="teacherName">
+                    <input type="text" class="form-control"  name="rollNumber" id="rollNumber">
                 </div>
                 <div class="col-md-6">
                     <label for="contactNumber">Section Name</label>
-                    <input type="text" class="form-control" name="contactNumber" id="sectionName">
+                    <input type="text" class="form-control" name="contactNumber" id="contactNumber">
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
                     <label for="rollNumber">Course Name</label>
-                    <input type="number" class="form-control" name="rollNumber" id="courseName">
+                    <input type="text" class="form-control" name="rollNumber" id="rollNumber">
                 </div>
                 <div class="col-md-6">
                     <label for="contactNumber">Batch Number</label>
-                    <input type="text" class="form-control" name="contactNumber" id="batch">
+                    <input type="text" class="form-control" name="contactNumber" id="contactNumber">
                 </div>
             </div>
             <div class="form_action--button mt-3">
                 <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" id="getData" class="btn btn-primary">GetData</button>
             </div>
         </form>
     </div>
-    <script type="module" src="./dashboard.js"></script>
+
+   
+    <script type="module" src="./dashboard.js"> </script>
 </body>
 
 </html>
