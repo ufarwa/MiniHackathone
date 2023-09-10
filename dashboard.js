@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", async () => {
      console.log(userData);
          userData.map(e=>{
           console.log(e)
-          tdCrud+=`<tr>
+          tdCrud=`<tr>
           <td>${e.studentName}</td>
           <td>${e.fatherName}</td>
           <td>${e.rollNumber}</td>
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           </tr>`
          })
 
-      crudData.innerHTML=`${tdCrud}`
+      crudData.innerHTML+=`${tdCrud}`
       console.log("Keys and values logged successfully!");
     });
   } catch (error) {
