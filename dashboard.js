@@ -44,20 +44,21 @@ document.addEventListener("DOMContentLoaded", async () => {
     onValue(usersReference, (data) => {
 
       const userData = data.val();
-        for(var i=0;i<userData.length;)
-      for (const userId in userData) {
-        console.log(userId);
-        const user = userData[userId];
-        console.log("Keys:");
-        for (const key in user) {
-          console.log(key);
-        }
-        console.log("Values:");
-        for (const key in user) {
-          tdCrud+=`<td> ${user[key]}</td>`
-        }
-      }
-      crudData.innerHTML=`<tr>${tdCrud}</tr>`
+     console.log(userData);
+         userData.map(e=>{
+          console.log(e)
+          tdCrud+=`<tr>
+          <td>${e.studentName}</td>
+          <td>${e.fatherName}</td>
+          <td>${e.rollNumber}</td>
+          <td>${e.contactNumber}</td>
+          <td>${e.courseName}</td>
+          <td>${e.batch}</td>
+          <td>${e.cnicNumber}</td>
+          </tr>`
+         })
+
+      crudData.innerHTML=`${tdCrud}`
       console.log("Keys and values logged successfully!");
     });
   } catch (error) {
